@@ -1,4 +1,5 @@
 import sorts.BucketSort;
+import sorts.mergeSort.MergeSort;
 import sorts.quickSort.Quicksort;
 import utils.Constants;
 import utils.FileUtil;
@@ -17,7 +18,8 @@ public class Core {
         FileUtil.generateRandomData(Constants.TEST_FILE_INPUT);
         //testBucketSort(true,100);
         //testSimpleSort();
-        testQuickSort(40);
+        //testQuickSort(40);
+        testMergeSort(1);
        // testQuickSort(1);
     }
 
@@ -39,6 +41,16 @@ public class Core {
         Log.d("Finish QuickSort sort",startTime);
         FileUtil.toFile(Constants.TEST_FILE_OUTPUT,data);
     }
+
+    private static void testMergeSort(int threadsNumber){
+        int[] data = FileUtil.fromFile(Constants.TEST_FILE_INPUT);
+        long startTime = Log.d("Start MergeSort with numberThreads=" + threadsNumber);
+        MergeSort.sort(data,threadsNumber);
+        Log.d("Finish MergeSort sort",startTime);
+        FileUtil.toFile(Constants.TEST_FILE_OUTPUT,data);
+    }
+
+
 
 
     private static void testSimpleSort() {
