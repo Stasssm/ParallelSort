@@ -4,6 +4,7 @@ import sorts.mergeSort.MergeSort;
 import sorts.oddEven.Barrier;
 import sorts.oddEven.EvenOddThread;
 import sorts.quickSort.Quicksort;
+import sorts.shellSort.ShellSort;
 import utils.Constants;
 import utils.FileUtil;
 import utils.Log;
@@ -22,13 +23,14 @@ public class Core {
 
 
     public static void main(String[] args) {
-      //  FileUtil.generateRandomData(Constants.TEST_FILE_INPUT);
+        FileUtil.generateRandomData(Constants.TEST_FILE_INPUT);
         //testBucketSort(true,100);
         //testSimpleSort();
         //testQuickSort(40);
         //testMergeSort(1);
         //testEvenOddSort(16);
-        testBitonicSort(16);
+        //testShellSort();
+        //testBitonicSort(16);
        // testQuickSort(1);
     }
 
@@ -94,7 +96,13 @@ public class Core {
     }
 
 
-
+    private static void testShellSort() {
+        int[] data = FileUtil.fromFile(Constants.TEST_FILE_INPUT);
+        long startTime = Log.d("Start shell sort");
+        new ShellSort().sort(data);
+        Log.d("Finish shell sort",startTime);
+        FileUtil.toFile(Constants.TEST_FILE_OUTPUT,data);
+    }
 
 
 
